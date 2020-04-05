@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const request = require(request);
+const request = require('request');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -14,7 +14,7 @@ request(url, function(error, response, body) {
 });
 
 app.get('/', function(req, res) {
-    res.send("This is the root URL of this application");
+    res.render('index');
 });
 
 app.listen(3000, function() {
