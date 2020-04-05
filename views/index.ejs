@@ -1,16 +1,18 @@
 <%- include('partials/header') %>
-    <h1>Movie Search Application</h1>
 
-    <form action="/" method="POST">
-        <input type="text" name="name" placeholder="Name">
-        <button type="submit">Search</button>
-    </form>
-
-    <ul>
-        <% movies.forEach(function(movie) { %>
-            <li><%= movie.Title %></li>
-        <% }) %>
-    </ul>
+<% movies.forEach(function(movie) { %>
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card">
+            <img src="<%= movie.Poster %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= movie.Title %> [<%= movie.Year %>]</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-outline-success btn-sm">Go somewhere</a>
+                <a href="#" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+            </div>
+        </div>
+    </div>
+<% }) %>
     
 
 <%- include('partials/footer') %>
