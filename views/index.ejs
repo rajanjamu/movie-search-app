@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Search App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-</head>
-<body>
+<%- include('partials/header') %>
     <h1>Movie Search Application</h1>
+
+    <form action="/" method="POST">
+        <input type="text" name="name" placeholder="Name">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        <% movies.forEach(function(movie) { %>
+            <li><%= movie.Title %></li>
+        <% }) %>
+    </ul>
     
-</body>
-</html>
+
+<%- include('partials/footer') %>

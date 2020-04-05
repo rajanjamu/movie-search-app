@@ -6,17 +6,21 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let movie = `harry`;
-let url = `http://www.omdbapi.com/?s=${movie}&apikey=ff31c86d`
-
-request(url, function(error, response, body) {
-
+app.get('/', function(req, res) {
+    res.render('index', {movies: []});
 });
 
-app.get('/', function(req, res) {
-    res.render('index');
+app.post('/', function(req, res) {
+    let movie = req.body.name;
+    let url = `http://www.omdbapi.com/?s=${movie}&apikey=ff31c86d`;
+    request(url, function(error, response, body) {
+        if (!error && response.statusCode === 200) {
+            let data = JSON.parse(body).Search;
+            res.render('index', {movies: data});
+        }
+    });
 });
 
 app.listen(3000, function() {
-    console.log('Express server has started!');
+    console.log('Movie Search App has Started!');
 });
